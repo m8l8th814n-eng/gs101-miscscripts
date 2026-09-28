@@ -1,0 +1,3 @@
+#!/bin/sh
+for i in $(seq 1 60); do [ -e /sys/bus/pci/devices/0001:01:00.0/link/l1_aspm ] && break; sleep 1; done
+echo 0 > /sys/bus/pci/devices/0001:01:00.0/link/l1_aspm

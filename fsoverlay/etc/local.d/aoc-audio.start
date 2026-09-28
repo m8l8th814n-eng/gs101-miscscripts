@@ -1,0 +1,4 @@
+#!/bin/sh
+for i in $(seq 1 60); do [ -e /dev/snd/controlC0 ] && break; sleep 1; done
+sh /home/simon/ljud/1-setup.sh >/dev/null 2>&1
+sh /home/simon/ljud/7-mic-route.sh >/dev/null 2>&1

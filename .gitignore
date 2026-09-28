@@ -1,0 +1,22 @@
+# find-lista över vendorträdet; nu 17,8 MB, får följa med
+# vendorfind.txt
+
+# proprietär firmware
+fsoverlay/lib/firmware/
+*.hcd
+*.blob
+*.wmfw
+*.ftb
+*.fw
+fw_bcmdhd.*
+aoc.bin
+
+# enhetsunik kalibrering
+*.cal
+
+# privat
+bt_addr_privat.txt
+
+# egna binärer (avkommentera om de inte ska med)
+# fsoverlay/apk/
+# fsoverlay/vendor/

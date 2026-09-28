@@ -1,0 +1,6 @@
+.nofail
+load-module module-alsa-sink device=hw:0,5 sink_name=aoc_speaker sink_properties=device.description=Speaker tsched=0 mmap=no fragments=4 fragment_size=3840 format=s16le rate=48000 channels=2
+load-module module-alsa-sink device=hw:0,1 sink_name=aoc_lowlat sink_properties=device.description=Speaker-LL tsched=0 mmap=no fragments=4 fragment_size=1920 format=s16le rate=48000 channels=2
+set-card-profile alsa_card.platform-sound-aoc off
+# set-default-sink aoc_speaker
+set-default-sink aoc_lowlat
