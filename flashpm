@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# /etc/init.d/flashpm      chmod +x
+# Kör strobe.sh, pm.sh och pm2.sh vid boot.
+
+description="Blixttest + CPU-governor + PCIe-power"
+
+# Argument till skripten. Ändra här.
+strobe_arg="torch"        # torch eller flash
+governor="schedutil"       # skickas till pm.sh
+
+depend() {
+	need localmount
+	after bootmisc modules
+}
+
+start() {
+	ebegin "Kör flashpm"
+
+	einfo "strobe.sh $strobe_arg"
+	/usr/local/bin/strobe.sh "$strobe_arg" || ewarn "strobe.sh misslyckades"
+
+	einfo "pm.sh $governor"
+	/usr/local/bin/pm.sh "$governor" || ewarn "pm.sh misslyckades"
+
+	einfo "pm2.sh"
+	/usr/local/bin/pm2.sh || ewarn "pm2.sh misslyckades"
+
+	eend 0
+}
+
+stop() {
+	ebegin "flashpm: inget att ångra"
+	eend 0
+}
